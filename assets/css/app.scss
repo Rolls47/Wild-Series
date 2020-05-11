@@ -1,0 +1,18 @@
+@import "~bootstrap/scss/bootstrap";
+$theme-colors: (
+        "primary": #000000,
+        "danger": #123751,
+        "warning":#f60303
+);
+body{
+
+    background-color: #123751;
+}
+h1 {
+    color: #000000;
+}
+
+
+.navbar-expand-lg{
+    background-color: black !important;
+}
