@@ -19,4 +19,18 @@ Class WildController extends AbstractController
             'website' => 'Wild Séries',
         ]);
     }
+
+    /**
+     * @Route("wild/show/{slug}", requirements={"slug"="[a-z0-9-]+"}, name="show")
+     * @param string $slug
+     * @return Response
+     */
+    public function show(string $slug = ''): Response
+    {
+        $slug = str_replace('-', ' ', $slug);
+        $slug = ucwords($slug);
+        return $this->render('wild/show.html.twig', [
+            'slug' => $slug
+        ]);
+    }
 }
