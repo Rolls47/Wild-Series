@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie : {{ Category.name }}{% endblock %}
+
+{% block body %}
+    <h1>3 séries de la catégorie : {{ Category.name }} </h1>
+    {% for program in programs %}
+        <div>
+            <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ Category.name }}</h2>
+            <p>{{ program.summary }}</p>
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
