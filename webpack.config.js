@@ -44,7 +44,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
+    // enables hashed filenames (e.g. app.abc123.scss)
     .enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills

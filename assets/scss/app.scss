@@ -1,12 +1,10 @@
+@import "bootswatch/_variables";
 @import "~bootstrap/scss/bootstrap";
-$theme-colors: (
-        "primary": #000000,
-        "danger": #123751,
-        "warning":#f60303
-);
+@import "bootswatch/_bootswatch";
+
 body{
 
-    background-color: #123751;
+    background-color: $primary;
 }
 h1 {
     color: #000000;

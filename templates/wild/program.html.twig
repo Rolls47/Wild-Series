@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+    <h1> Série : {{ program.title }}</h1>
+    {% for season in seasons %}
+        <div>
+
+           <a href="{{ path('wild_show_seasonId', {seasonId: season.id}) }}">Voir les épisodes de la saison {{ season.number }}</a>
+            {{ season.year }}
+            {{ season.description }}
+        </div>
+    {% else %}
+        Merci de faire une nouvelle recherche.
+    {% endfor %}
+    <a href="{{ path('app_index') }}">
+        Page d'accueil
+    </a>
+
+
+{% endblock %}
