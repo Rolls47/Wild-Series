@@ -5,17 +5,15 @@
     <div>
         <h1> {{ program.title }} Saison : {{ season.number }}</h1>
     </div>
-
-    {% for episode in episodes %}
         <div>
-            <a href="{{ path('wild_show_episode', {'id': episode.id}) }}">
-            <p>{{ episode.number }}</p>
+            <img src="{{ program.poster }}" alt="picture">
             <h5> {{ episode.title }} </h5>
-            </a>
+
+            <p>{{ episode.number }}</p>
+
+            <p>{{ episode.synopsis }}</p>
+
         </div>
-    {% else %}
-        Merci de faire une nouvelle recherche.
-    {% endfor %}
 
     <a href="{{ path('app_index') }}">
         Page d'accueil
