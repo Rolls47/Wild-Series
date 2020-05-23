@@ -7,7 +7,10 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\ProgramSearchType;
+use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,26 +19,44 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @route("/wild", name="wild_")
  */
-Class WildController extends AbstractController
+class WildController extends AbstractController
 {
     /**
      * @Route("/", name="index")
-     *
+     * @param Request $request
+     * @param ProgramRepository $programRepository
+     * @return Response
      */
-    public function index(): Response
+    public function index(Request $request, ProgramRepository $programRepository): Response
     {
+        $programs = $programRepository->findAll();
         $programs = $this->getDoctrine()
             ->getRepository(program::class)
             ->findAll();
-
         if (!$programs) {
             throw $this->createNotFoundException(
                 'No program found in program\'s table.'
             );
         }
+
+        $form = $this->createForm(
+            ProgramSearchType::class,
+            null,
+            ['method' => Request::METHOD_GET]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+            $programs = $programRepository->findByTitle($data);
+        }
+
+
         return $this->render('wild/index.html.twig', [
-            'programs' => $programs
-        ]);
+                'programs' => $programs,
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     /**
@@ -106,8 +127,8 @@ Class WildController extends AbstractController
         $seasons = $program->getSeasons();
 
         return $this->render('wild/program.html.twig', [
-            'program'      => $program,
-            'seasons'      => $seasons
+            'program' => $program,
+            'seasons' => $seasons
         ]);
     }
 
@@ -122,8 +143,8 @@ Class WildController extends AbstractController
         $episodes = $season->getEpisodes();
 
         return $this->render('wild/season.html.twig', [
-            'season'   => $season,
-            'program'  => $program,
+            'season' => $season,
+            'program' => $program,
             'episodes' => $episodes
         ]);
     }
@@ -136,12 +157,12 @@ Class WildController extends AbstractController
     public function showByEpisode(episode $episode): Response
     {
         $season = $episode->getSeason();
-        $program= $season->getProgram();
+        $program = $season->getProgram();
 
         return $this->render('wild/episode.html.twig', [
-            'episode'   => $episode,
-            'program'      => $program,
-            'season'   => $season,
+            'episode' => $episode,
+            'program' => $program,
+            'season' => $season,
 
         ]);
     }
