@@ -3,6 +3,7 @@
 
 namespace App\DataFixtures;
 
+use App\Service\Slugify;
 use  Faker;
 use App\Entity\Actor;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -36,6 +37,9 @@ const ACTORS=[
             foreach ($actorData['programs'] as $program) {
                 $actor->addProgram($this->getReference($program));
             }
+            $slugify = new Slugify();
+            $slug = $slugify->generate($actor->getName());
+            $actor ->setSlug($slug);
             $manager->persist($actor);
             $this->addReference('actor_' . $name, $actor);
         }
@@ -43,6 +47,9 @@ const ACTORS=[
             for ($i = 5; $i < 51; $i++) {
                 $actor = new Actor();
                 $actor->setName($faker->name());
+                $slugify = new Slugify();
+                $slug = $slugify->generate($actor->getName());
+                $actor ->setSlug($slug);
                 $actor->addProgram($this->getReference('program_' . rand(0,5)));
                 $manager->persist($actor);
             }
