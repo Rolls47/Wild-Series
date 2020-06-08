@@ -10,13 +10,20 @@ use Doctrine\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
 {
-
+const CATEGORIES=[
+    'Actions',
+    'Aventure',
+    'Animation',
+    'Fantastique',
+    'Horreur',
+];
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 50; $i++) {
+        foreach (self::CATEGORIES as $key => $categoryName){
             $category = new Category();
-            $category->setName('Nom de catégorie ' . $i);
+            $category->setName($categoryName);
             $manager->persist($category);
+            $this->addReference('category_' . $key, $category);
         }
         $manager->flush();
     }
