@@ -22,3 +22,6 @@ https://www.loom.com/share/a6df8b437dbd49a3986f3dead5d5a95d
 
 Quête 17
 https://www.loom.com/share/d657e56ac5dd436faf4d8853384bd8eb
+
+Quête 18
+https://www.loom.com/share/88015c8105f74a22816ee5dd6f74677f
