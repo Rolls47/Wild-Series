@@ -8,7 +8,7 @@
     {% for season in program.seasons %}
         <div>
 
-           <a href="{{ path('wild_show_season', {season: season.id, program: program.id, category: program.category.id}) }}">Voir les épisodes de la saison {{ season.number }}</a>
+            <a href="{{ path('wild_show_seasonId', {seasonId: season.id}) }}" > Saison {{ season.number }} </a>
             {{ season.year }}
             {{ season.description }}
         </div>

@@ -12,10 +12,10 @@
         <div>
             <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
-            <p>
-                <a href="{{ path('wild_show', {slug: program.title|lower|replace({' ': '-'})}) }}" class="btn btn-primary">Info sur la série</a>
-                <a href="{{ path('wild_show_program', {'program': program.id} )}}" class="btn btn-secondary">Toute les saisons</a>
-            </p>
+            <div class="container-fluid">
+                <a href="{{ path('wild_show_programId', {programId: program.id({' ': '-'})}) }}"
+                   class="btn btn-secondary btn-lg">Voir les saisons </a>
+            </div>
         </div>
     {% else %}
         Aucune série trouvée.
