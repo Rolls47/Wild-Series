@@ -12,12 +12,23 @@
             <p>{{ episode.number }}</p>
 
             <p>{{ episode.synopsis }}</p>
-
+{% for comment in comments %}
+            <p>{{ comment.comment }}</p>
+            <p>{{ comment.rate }}</p>
         </div>
-
+{% endfor %}
     <a href="{{ path('app_index') }}">
         Page d'accueil
     </a>
+    {% if app.user %}
 
+    <div class="container w-50">
+        <h5 class="text-center"> Ajouter un commentaire</h5>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn bg-warning">{{ button_label|default('Ajouter') }}</button>
+        {{ form_end(form) }}
+    </div>
+    {% endif %}
 
 {% endblock %}
