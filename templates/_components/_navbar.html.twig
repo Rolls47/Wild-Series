@@ -7,22 +7,30 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('actor_index') }}">Actor CRUD</a>
+                <a class="nav-link" href="{{ path('wild_index') }}">programs</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/program/">Program CRUD</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/season/">Season CRUD</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/episode/">Episode CRUD</a>
-            </li>
+            {% if is_granted('ROLE_SUBSCRIBER') %}
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    CRUD
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{{ path('actor_index') }}">Actor CRUD</a>
+                    <a class="dropdown-item" href="{{ path('program_index') }}">Program CRUD</a>
+                    <a class="dropdown-item" href="{{ path('season_index') }}">Season CRUD</a>
+                    <a class="dropdown-item" href="{{ path('episode_index') }}">Episode CRUD</a>
+                    <a class="dropdown-item" href="{{ path('comment_index') }}">Comment CRUD</a>
+                </div>
+            </div>
+            {% endif %}
+            {% if is_granted('ROLE_SUBSCRIBER') %}
             <li class="nav-item">
                 <a class="nav-link" href="/wild/category/add/">Category ADD</a>
             </li>
+            {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="{{ path('app_login') }}">login</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

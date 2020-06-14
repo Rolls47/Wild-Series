@@ -5,6 +5,7 @@ namespace App\Form;
 
 use App\Entity\Comment;
 use Roave\BetterReflection\Identifier\IdentifierType;
+use Symfony\Bridge\Doctrine\Form\ChoiceList\IdReader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,8 +18,7 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('comment', TextType::class)
-            ->add('rate', IntegerType::class)
-        ;
+            ->add('rate', IntegerType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
