@@ -10,28 +10,45 @@
                 <a class="nav-link" href="{{ path('wild_index') }}">programs</a>
             </li>
             {% if is_granted('ROLE_SUBSCRIBER') %}
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    CRUD
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{ path('actor_index') }}">Actor CRUD</a>
-                    <a class="dropdown-item" href="{{ path('program_index') }}">Program CRUD</a>
-                    <a class="dropdown-item" href="{{ path('season_index') }}">Season CRUD</a>
-                    <a class="dropdown-item" href="{{ path('episode_index') }}">Episode CRUD</a>
-                    <a class="dropdown-item" href="{{ path('comment_index') }}">Comment CRUD</a>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CRUD
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('actor_index') }}">Actor CRUD</a>
+                        <a class="dropdown-item" href="{{ path('program_index') }}">Program CRUD</a>
+                        <a class="dropdown-item" href="{{ path('season_index') }}">Season CRUD</a>
+                        <a class="dropdown-item" href="{{ path('episode_index') }}">Episode CRUD</a>
+                        <a class="dropdown-item" href="{{ path('comment_index') }}">Comment CRUD</a>
+                    </div>
                 </div>
-            </div>
             {% endif %}
             {% if is_granted('ROLE_SUBSCRIBER') %}
-            <li class="nav-item">
-                <a class="nav-link" href="/wild/category/add/">Category ADD</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/wild/category/add/">Category ADD</a>
+                </li>
             {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">login</a>
-            </li>
+
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_profil') }}">Mon compte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                </li>
+            {% else %}
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Connexion
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('app_login') }}">Se connecter</a>
+                        <a class="dropdown-item" href="{{ path('app_register') }}">S'inscrire</a>
+                    </div>
+                </div>
+            {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
