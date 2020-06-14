@@ -16,8 +16,10 @@
             <p>{{ comment.comment }}</p>
             <p>{{ comment.rate }}</p>
             <p>{{ comment.author.username }}</p>
+    {% if is_granted('ROLE_SUBSCRIBER') %}
    {% if comment.author.id == app.user.id %}
         {% include('comment/_delete_form.html.twig') %}
+    {% endif %}
     {% endif %}
         </div>
 {% endfor %}
