@@ -20,7 +20,9 @@
                 <td>{{ actor.name }}</td>
                 <td>
                     <a href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
