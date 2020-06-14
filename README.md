@@ -25,11 +25,13 @@ https://www.loom.com/share/d657e56ac5dd436faf4d8853384bd8eb
 
 Quête 18
 https://www.loom.com/share/88015c8105f74a22816ee5dd6f74677f
+https://imgur.com/NUumJxo
 
 Quête 19 
 https://www.loom.com/share/f24916c7741a42228bcdb9c2694b5238
 
 
-
 Quête 20
 https://www.loom.com/share/15abacad274d4b4fa1bb86784ed618f2
+
+
