@@ -18,7 +18,6 @@ class ProgramRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Program::class);
     }
-
     // /**
     //  * @return Program[] Returns an array of Program objects
     //  */
@@ -47,4 +46,22 @@ class ProgramRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAllWithCategories()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.category', 'c' )
+            ->addSelect('c')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+    public function findAllWithCategoriesAndActor()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->leftJoin('p.actors', 'a')
+            ->addSelect('a')
+            ->getQuery();
+
+        return $qb->execute();
+    }
 }

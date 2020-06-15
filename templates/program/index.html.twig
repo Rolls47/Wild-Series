@@ -22,7 +22,13 @@
                 <td>{{ program.summary }}</td>
                 <td>{{ program.poster }}</td>
                 <td>
-
+                    {% for actor in program.actors %}
+                    {{ actor.name }},
+                    {% else %}
+                    pas d'acteur pour cette Série ! Incroyable
+                    {% endfor %}
+                </td>
+                <td>
                     <a href="{{ path('program_show', {'slug': program.slug}) }}">show</a>
                     {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('program_edit', {'slug': program.slug}) }}">edit</a>
