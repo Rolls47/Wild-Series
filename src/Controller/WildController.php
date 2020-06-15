@@ -32,7 +32,7 @@ class WildController extends AbstractController
      */
     public function index(ProgramRepository $programRepository, Request $request): Response
     {
-        $programs = $programRepository->findAll();
+        $programs = $programRepository->findAllWithCategories();
 
         if (!$programs) {
             throw $this->createNotFoundException(

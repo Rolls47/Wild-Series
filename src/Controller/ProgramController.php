@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Actor;
 use App\Entity\Program;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
@@ -30,7 +29,7 @@ class ProgramController extends AbstractController
     public function index(ProgramRepository $programRepository): Response
     {
         return $this->render('program/index.html.twig', [
-            'programs' => $programRepository->findAll(),
+            'programs' => $programRepository->findAllWithCategoriesAndActor(),
         ]);
     }
 

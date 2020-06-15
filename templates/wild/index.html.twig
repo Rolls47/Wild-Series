@@ -10,7 +10,7 @@
     {{ form_end(form) }}
     {% for program in programs %}
         <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+          <h2>{{ loop.index }} / {{ program.title }}</h2>
             <p>{{ program.summary }}</p>
             <div class="container-fluid">
                 <a href="{{ path('wild_show_programId', {programId: program.id({' ': '-'})}) }}"
